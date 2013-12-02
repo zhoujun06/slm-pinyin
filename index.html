@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+	<script type="text/javascript">
+function sendRequest() {
+	oHanzi = document.getElementById("hanzi");
+	xmlhttp =new XMLHttpRequest();
+	url = "/convert?pinyin="+document.getElementById("pinyin").value;
+	xmlhttp.open("GET",url,false);
+	xmlhttp.send()
+	oHanzi.innerHTML = xmlhttp.responseText;
+}
+function send(e) {
+if (e.keyCode == 13)
+{
+	document.getElementById('submit').click();
+	event.returnValue=false;
+}
+}
+</script>
+</head>
+<body >
+<script>
+</script>
+<center>
+	<form style="padding-top:100px" name="pinyinform">
+		<table>
+			<caption>Chinese Pinyin Input Method</caption>
+			<tbody>
+				<tr>
+					<td>Pinyin</td>
+					<td> <input type="text" name="pinyin" id="pinyin" maxlength="300" size="110" value="beijing" onkeypress="send(event)"></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="button" id="submit" value="submit" value="convert" onclick="sendRequest()" onsubmit="sendRequest()">
+	</form>
+		<table style="padding-top:30">
+			<tbody>
+				<tr>
+					<td>汉字</td>
+					<td> <textarea name="hanzi" id="hanzi" cols="80" rows="1">北京</textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Pinyin could be continuous without space, or separated by space for each word or character. </p>
+		<p>The algorithm will try to correct possible mis spellings and also try to split long Pinyin sequences.</p>
+		<p>For example:</p>
+		<p>maozedong he jiangjieshi --  毛泽东和蒋介石</p>
+		<p>maozedon  he jiangjieshi --  毛泽东和蒋介石</p>
+		<p>maozedonghejiangjieshi --  毛泽东和蒋介石</p>
+
+	<p style="padding-top:100">JunZhou@usc</p>
+</center>
+</body>
+</html>

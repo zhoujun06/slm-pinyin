@@ -1,0 +1,7 @@
+sh s
+zh z
+ch c
+ang an
+ing in
+eng en
+v u
